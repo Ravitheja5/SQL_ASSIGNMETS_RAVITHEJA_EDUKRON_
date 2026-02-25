@@ -1,0 +1,20 @@
+-- 1.Write a query to convert all customer names to uppercase.
+SELECT UPPER(Customer_Name) FROM Orders;
+
+
+-- 3Find the length of each Customer_Name.
+SELECT LENGTH(Customer_Name) FROM Orders;
+-- 4. Replace the word "Rice" with "Premium Rice" in Product_Name.
+SELECT REPLACE(Product_Name, 'Rice', 'Premium Rice') FROM Orders;
+-- 5. Remove leading and trailing spaces from Customer_Name.
+SELECT TRIM(Customer_Name) FROM Orders;
+-- 6. Concatenate First_Name and Last_Name as Full_Name.
+SELECT First_Name || ' ' || Last_Name AS Full_Name FROM Orders;
+-- 7. Find customers whose names start with 'A'.
+SELECT * FROM Orders WHERE Customer_Name LIKE 'A%';
+-- 8. Extract the domain name from Email_ID.
+SELECT SUBSTR(Email_ID, INSTR(Email_ID, '@') + 1) FROM Orders;
+-- 9. Find the position of '@' in Email_ID.
+SELECT INSTR(Email_ID, '@') FROM Orders;
+-- 10. Reverse the Product_Name.
+SELECT REVERSE(Product_Name) FROM Orders;
