@@ -1,0 +1,106 @@
+cells:
+  - kind: 2
+    value: ""
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* /* 11. **H11.** List employees with commission_pct NULL and job_id
+      starting with 'SA'.  \r
+
+      \    **Hint:** WHERE commission_pct IS NULL AND job_id LIKE 'SA%'. */\r
+
+      SELECT * FROM hr.employees WHERE commission_pct IS NULL AND job_id LIKE
+      'SA%';"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 12. **H12.** Get the 3 oldest employees (earliest hire_date) in
+      department 90.  \r
+
+      \    **Hint:** WHERE department_id = 90 ORDER BY hire_date ASC FETCH FIRST
+      3 ROWS ONLY. */\r
+
+      SELECT * FROM hr.employees WHERE department_id = 90 ORDER BY hire_date ASC
+      FETCH FIRST 3 ROWS ONLY;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 13. **H13.** List employees whose last_name does not start with 'A',
+      'B', or 'C'.  \r
+
+      \    **Hint:** WHERE last_name NOT LIKE 'A%' AND last_name NOT LIKE 'B%'
+      AND last_name NOT LIKE 'C%'; or use NOT IN with SUBSTR.\r
+
+      \ */\r
+
+      SELECT * FROM hr.employees WHERE last_name NOT LIKE 'A%' AND last_name NOT
+      LIKE 'B%' AND last_name NOT LIKE 'C%';"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 14. **H14.** Find employees with salary in (5000, 6000, 7000,
+      8000).  \r
+
+      \    **Hint:** WHERE salary IN (5000, 6000, 7000, 8000). */\r
+
+      SELECT * FROM hr.employees WHERE salary IN (5000, 6000, 7000, 8000);"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 15. **H15.** List employees ordered by department_id ASC, then by
+      hire_date DESC within each department.  \r
+
+      \    **Hint:** ORDER BY department_id, hire_date DESC. */\r
+
+      SELECT * FROM hr.employees ORDER BY department_id, hire_date DESC;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 16. **H16.** Get employees whose first_name and last_name both start
+      with the same letter (simplified: same first letter).  \r
+
+      \    **Hint:** WHERE SUBSTR(first_name,1,1) = SUBSTR(last_name,1,1). */\r
+
+      SELECT * FROM hr.employees WHERE SUBSTR(first_name,1,1) =
+      SUBSTR(last_name,1,1);"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 17. **H17.** List employees with manager_id not null and
+      department_id in (50, 80, 100).  \r
+
+      \    **Hint:** WHERE manager_id IS NOT NULL AND department_id IN (50, 80,
+      100). */\r
+
+      SELECT * FROM hr.employees WHERE manager_id IS NOT NULL AND department_id
+      IN (50, 80, 100);"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* \r
+
+      \r
+
+      \r
+
+      18. **H18.** Find employees with salary between 3000 and 5000 and job_id
+      containing 'REP'.  \r
+
+      \    **Hint:** WHERE salary BETWEEN 3000 AND 5000 AND job_id LIKE '%REP%'.
+      */\r
+
+      SELECT * FROM hr.employees WHERE salary BETWEEN 3000 AND 5000 AND job_id
+      LIKE '%REP%';"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 19. **H19.** List departments (hr.departments) ordered by
+      department_name descending.  \r
+
+      \    **Hint:** SELECT * FROM hr.departments ORDER BY department_name DESC.
+      */\r
+
+      SELECT * FROM hr.departments ORDER BY department_name DESC;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 20. **H20.** Get employees with hire_date not in 2004 (all years
+      except 2004).  \r
+
+      \    **Hint:** WHERE EXTRACT(YEAR FROM hire_date) <> 2004 or hire_date <
+      DATE '2004-01-01' OR hire_date > DATE '2004-12-31'.\r
+
+      \  */\r
+
+      SELECT * FROM hr.employees WHERE EXTRACT(YEAR FROM hire_date) <> 2004;"
+    languageId: oracle-sql
