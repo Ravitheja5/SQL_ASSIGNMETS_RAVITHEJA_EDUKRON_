@@ -1,0 +1,134 @@
+cells:
+  - kind: 2
+    value: "/* \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \ */"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 11. **M11.** List employees with salary not in the range 5000 to
+      10000.  \r
+
+      \    **Hint:** WHERE salary NOT BETWEEN 5000 AND 10000, or salary < 5000
+      OR salary > 10000.\r
+
+      \ */\r
+
+      SELECT * FROM hr.employees\r
+
+      WHERE salary NOT BETWEEN 5000 AND 10000;\r
+
+      \r\n"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 12. **M12.** Get employees whose job_id contains 'CLERK'.  \r
+
+      \    **Hint:** WHERE job_id LIKE '%CLERK%'. */\r
+
+      SELECT * FROM hr.employees WHERE JOB_ID LIKE '%CLERK%';\r\n"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 13. **M13.** List employees with commission_pct greater than 0.2.  \r
+
+      \    **Hint:** WHERE commission_pct > 0.2 (and optionally commission_pct
+      IS NOT NULL).\r
+
+      \ */\r
+
+      SELECT * FROM hr.employees WHERE commission_pct > 0.2 AND commission_pct
+      IS NOT NULL;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      /* 14. **M14.** Find the 10 most recently hired employees.  \r
+
+      \    **Hint:** ORDER BY hire_date DESC FETCH FIRST 10 ROWS ONLY. */\r
+
+      SELECT * FROM hr.employees ORDER BY hire_date DESC FETCH FIRST 10 ROWS
+      ONLY;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 15. **M15.** List employees in departments 50 or 60, ordered by
+      department_id then salary descending.  \r
+
+      \    **Hint:** WHERE department_id IN (50, 60) ORDER BY department_id,
+      salary DESC. */\r
+
+      SELECT * FROM hr.employees WHERE department_id IN (50, 60) ORDER BY
+      department_id, salary DESC;\r\n"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 16. **M16.** Get employees whose last_name has exactly 5
+      characters.  \r
+
+      \    **Hint:** WHERE last_name LIKE '_____' (5 underscores). */\r
+
+      SELECT * FROM hr.employees WHERE last_name LIKE '_____';"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 17. **M17.** List departments where manager_id is not null from
+      hr.departments.  \r
+
+      \    **Hint:** FROM hr.departments WHERE manager_id IS NOT NULL.\r
+
+      \ */\r
+
+      SELECT * FROM hr.departments WHERE manager_id IS NOT NULL;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 18. **M18.** Find employees with salary >= 10000, ordered by salary
+      ascending.  \r
+
+      \    **Hint:** WHERE salary >= 10000 ORDER BY salary. */\r
+
+      SELECT * FROM hr.employees WHERE salary >= 10000 ORDER BY salary asc;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 19. **M19.** List employees whose email ends with '.com' or contains
+      'example' (if applicable; otherwise use a pattern that exists).  \r
+
+      \    **Hint:** WHERE email LIKE '%.com' or email LIKE '%example%'
+      depending on data. */\r
+
+      SELECT * FROM hr.employees WHERE email LIKE '%.com' OR email LIKE
+      '%example%';"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* 20. **M20.** Get distinct job_id values from employees in department
+      50.  \r
+
+      \    **Hint:** SELECT DISTINCT job_id FROM hr.employees WHERE
+      department_id = 50. */\r
+
+      SELECT DISTINCT job_id FROM hr.employees WHERE department_id = 50;"
+    languageId: oracle-sql
