@@ -1,0 +1,217 @@
+cells:
+  - kind: 2
+    value: "\r
+
+      /*\r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r
+
+      \r\n"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* /* H11. Add a column salary_band VARCHAR2(10) and update it with CASE
+      (Low/Medium/High) based on salary; then add DEFAULT 'Medium' for new
+      rows.\r
+
+      Hint: ADD column; UPDATE ... SET salary_band = CASE ...; then MODIFY
+      column DEFAULTal 'Medium' if needed. */\r
+
+      \r
+
+      \r
+
+      ALTER TABLE employees_backup\r
+
+      ADD salary_band VARCHAR2(10);\r
+
+      \r
+
+      update  employees_backup set salary_band =  \r
+
+      case \r
+
+      when salary <30000 then 'low'\r
+
+      when salary  between 30000 and 70000 then 'medium'\r
+
+      when salary > 70000 then 'High'\r
+
+      end;\r
+
+      \r
+
+      \r
+
+      \r
+
+      ALTER TABLE employees_backup\r
+
+      MODIFY salary_band DEFAULT 'Medium';\r
+
+      \r
+
+      \r\n"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* H12. Create table emp_duplicate_check with employee_id, first_name,
+      last_name, and a column dup_count showing how many employees share the
+      same first_name and last_name (use analytic or self-join in CTAS).\r
+
+      Hint: Use a subquery with COUNT(*) OVER (PARTITION BY first_name,
+      last_name) AS dup_count in the SELECT.\r
+
+      \ */\r
+
+      \r
+
+      \r
+
+      --create table emp_duplicate_check as select employee_id, first_name,
+      last_name,count(*) over (partition by first_name,last_name) as dup_count
+      from hr.employees; \r
+
+      \r
+
+      select * from emp_duplicate_check;\r
+
+      \r
+
+      \r
+
+      \r\n"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* H13. Create an empty table with the same structure as hr.employees
+      and name it emp_import_staging.\r
+
+      Hint: CREATE TABLE emp_import_staging AS SELECT * FROM hr.employees WHERE
+      1=0;\r
+
+      \ */\r
+
+      create table emp_import_staging as select * from hr.employees where 1=0;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* H14. Modify the data type of a column from NUMBER to VARCHAR2 (e.g.
+      store employee_id as string). Oracle may require add new column, update,
+      drop old, rename.\r
+
+      Hint: Add new VARCHAR2 column; UPDATE set new = TO_CHAR(old); DROP old;
+      RENAME new to old.\r
+
+      \ */\r
+
+      alter table emp_import_staging modify employee_id  VARCHAR2(10);\r
+
+      \r
+
+      \r\n"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* H15. Create table dept_location_1700 from hr.departments where
+      location_id = 1700.\r
+
+      Hint: CREATE TABLE dept_location_1700 AS SELECT * FROM hr.departments
+      WHERE location_id = 1700;\r
+
+      \ */\r
+
+      create TABLE dept_location_1700 AS SELECT * FROM HR.DEPARTMENTS WHERE
+      location_id = 1700;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* \r
+
+      H16. Add column version NUMBER DEFAULT 1 and last_modified DATE DEFAULT
+      SYSDATE to backup table.\r
+
+      Hint: Two ALTER TABLE ADD statements. */\r
+
+      SELECT * FROM dept_location_1700;\r\n"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* \r
+
+      H16. Add column version NUMBER DEFAULT 1 and last_modified DATE DEFAULT
+      SYSDATE to backup table.\r
+
+      Hint: Two ALTER TABLE ADD statements. */\r
+
+      \r
+
+      ALTER TABLE dept_location_1700 ADD last_modified DATE DEFAULT SYSDATE;\r
+
+      \r\n"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* \r
+
+      \r
+
+      H17. Create table emp_salary_range with columns from hr.employees but only
+      for salary between 5000 and 15000.\r
+
+      Hint: CREATE TABLE emp_salary_range AS SELECT * FROM hr.employees WHERE
+      salary BETWEEN 5000 AND 15000; */\r
+
+      CREATE TABLE emp_salary_range AS SELECT * FROM HR.EMPLOYEES WHERE SALARY
+      BETWEEN 5000 AND 15000;\r\n"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* \r
+
+      H18. Truncate a table and then add a new column. Verify the table has 0
+      rows.\r
+
+      Hint: TRUNCATE TABLE ...; ALTER TABLE ... ADD ...; SELECT COUNT(*) FROM
+      ...; */\r
+
+      TRUNCATE TABLE emp_salary_range;\r
+
+      ALTER TABLE emp_salary_range ADD NEW_COLUMN VARCHAR(50);\r
+
+      select * from emp_salary_range;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* H19. Create table job_list with distinct job_id from hr.employees and
+      a literal column category with value 'HR'.\r
+
+      Hint: CREATE TABLE job_list AS SELECT DISTINCT job_id, 'HR' AS category
+      FROM hr.employees;\r
+
+      \ */\r
+
+      create table job_list as select distinct job_id,'HR' as category from
+      hr.employees;\r
+
+      select * from job_list;\r\n"
+    languageId: oracle-sql
+  - kind: 2
+    value: "/* H20. Drop table emp_structure if it exists (Oracle: use PL/SQL
+      EXECUTE IMMEDIATE 'DROP TABLE emp_structure'; with exception when table
+      does not exist, or check user_tables first).\r
+
+      Hint: BEGIN EXECUTE IMMEDIATE 'DROP TABLE emp_structure'; EXCEPTION WHEN
+      OTHERS THEN IF SQLCODE != -942 THEN RAISE; END IF; END; (942 = table does
+      not exist). */\r
+
+      \r
+
+      \r
+
+      \r
+
+      \r\n"
+    languageId: oracle-sql
